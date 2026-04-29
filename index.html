@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>DuoDraft | Wrocławska Pracownia Kuchni</title>
+        <title>DuoDraft | Kuchnie na miarę</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -11,13 +11,37 @@
             rel="stylesheet"
         />
         <link rel="stylesheet" href="common.css" />
+        <style>
+            /* Dodatkowy styl dla listy korzyści w sekcji Hero, aby wyglądała elegancko */
+            .hero-benefits {
+                list-style: none;
+                padding: 0;
+                margin: 2rem 0;
+                text-align: left;
+                display: inline-block;
+            }
+            .hero-benefits li {
+                margin-bottom: 1rem;
+                font-size: 1.1rem;
+                line-height: 1.5;
+                position: relative;
+                padding-left: 2rem;
+            }
+            .hero-benefits li::before {
+                content: '✓';
+                position: absolute;
+                left: 0;
+                color: #d4af37; /* Złoty/Premium akcent, dopasuj do swojego CSS jeśli masz zmienne */
+                font-weight: bold;
+            }
+        </style>
     </head>
     <body>
         <header>
             <div class="logo">DuoDraft</div>
             <nav>
                 <a href="#approach">Podejście</a>
-                <a href="#story">Pracownia</a>
+                <a href="#story">O nas</a>
                 <a href="#process">Proces</a>
                 <a href="#contact">Kontakt</a>
             </nav>
@@ -25,13 +49,31 @@
 
         <section id="hero">
             <div class="container">
-                <p class="subtitle" style="color: white">Projekt / Rzemiosło / Wrocław</p>
-                <h1>Wrocławska<br />pracownia kuchni</h1>
-                <p>
-                    Zamiast chłodnej produkcji – dojrzały projekt. Architektoniczna precyzja i
-                    inżynieryjny spokój w Twoim nowym mieszkaniu we Wrocławiu.
+                <p class="subtitle" style="color: white">Kompleksowe realizacje we Wrocławiu</p>
+                <h1>Twoja nowa kuchnia od A do Z.</h1>
+                <p style="max-width: 700px; margin: 0 auto">
+                    Zdejmujemy z Ciebie cały stres związany z urządzaniem. Od pierwszej kreski na
+                    projekcie, aż po ostatnią wkręconą śrubkę.
                 </p>
-                <a href="#contact" class="btn">Umów bezpłatny szkic</a>
+
+                <ul class="hero-benefits">
+                    <li>
+                        <strong>Twój pomysł lub nasza wizja:</strong> Przełożymy Twoje oczekiwania
+                        na techniczne realia. Nie masz pomysłu? Zaprojektujemy przestrzeń, która Cię
+                        zachwyci.
+                    </li>
+                    <li>
+                        <strong>Proces "Bez Stresu":</strong> Ty mówisz, czego potrzebujesz, a my
+                        organizujemy wszystko – od pomiarów, przez zamówienia, aż po logistykę.
+                    </li>
+                    <li>
+                        <strong>Montaż i pełna odpowiedzialność:</strong> Wchodzimy, montujemy,
+                        bierzemy na siebie ewentualne poprawki. Zostawiamy po sobie czystą, gotową
+                        kuchnię.
+                    </li>
+                </ul>
+                <br />
+                <a href="#contact" class="btn">Oddaj kuchnię w dobre ręce</a>
             </div>
         </section>
 
@@ -41,8 +83,8 @@
                 <h2>Dobry projekt potrzebuje ciszy<br />i dwóch różnych spojrzeń.</h2>
                 <p>
                     Wykończenie mieszkania we wrocławskim stanie deweloperskim to stres i wyścig o
-                    ułamki centymetrów. Prowadzimy Cię przez ten proces w duecie, rozdzielając to,
-                    co piękne, od tego, co technologiczne.
+                    ułamki centymetrów. My bierzemy ten ciężar na siebie. Prowadzimy Cię przez ten
+                    proces w duecie, rozdzielając to, co piękne, od tego, co technologiczne.
                 </p>
             </div>
 
@@ -52,7 +94,8 @@
                     <h3>Wyczucie (Lucyna)</h3>
                     <p>
                         Estetyka, która oddycha. Opowiesz nam, jak spędzasz poranki, a my zadbamy o
-                        kompozycje faktur, barwy materiałów i czystą ludzką wygodę na co dzień.
+                        kompozycje faktur, barwy materiałów i czystą ludzką wygodę na co dzień. Ty
+                        wybierasz, my dopasowujemy.
                     </p>
                 </div>
                 <div class="pillar">
@@ -61,7 +104,7 @@
                     <p>
                         Język wektorów. Każda idea przeliczana jest na twarde parametry w
                         profesjonalnych środowiskach 3D CAD/CAM. Szukamy milimetrów i bezlitośnie
-                        eliminujemy kolizje instalacyjne.
+                        eliminujemy kolizje instalacyjne, żeby na montażu nie było niespodzianek.
                     </p>
                 </div>
                 <div class="pillar">
@@ -70,7 +113,8 @@
                     <p>
                         Jako pracownia uciekliśmy od kurzu tradycyjnej stolarni. Gotowy model
                         maszyny sterowane numerycznie wycinają u naszych partnerów pod miastem z
-                        niedoścignioną jakością formatu.
+                        niedoścignioną jakością formatu. My skupiamy się w 100% na obsłudze Twojego
+                        zlecenia.
                     </p>
                 </div>
             </div>
@@ -78,16 +122,6 @@
 
         <section id="story" class="section-pad">
             <div class="container story-grid">
-                <div class="story-img">
-                    <!-- Dodano loading="lazy" oraz atrybuty width/height -->
-                    <img
-                        src="https://images.unsplash.com/photo-1534067167667-0c25a0a38ccb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                        alt="Szkice projektowe DuoDraft"
-                        loading="lazy"
-                        width="800"
-                        height="1000"
-                    />
-                </div>
                 <div class="story-text">
                     <p class="subtitle">Nasze DNA</p>
                     <h2>Dorastaliśmy wśród projektów. Został nam po tym szacunek.</h2>
@@ -102,9 +136,9 @@
                     <p>
                         Podzieliliśmy się tym, co robimy najlepiej. Lucyna wnosi wrażliwość i układ.
                         Michał przekłada tę wizję na język oprogramowania inżynieryjnego. My
-                        bierzemy odpowiedzialność, Ty zyskujesz przestrzeń dopracowaną pod klucz.
-                        Żadnego chaosu produkcyjnego. Po prostu praca przy biurku wykonana
-                        prawidłowo od początku do końca.
+                        bierzemy pełną odpowiedzialność za realizację, Ty zyskujesz przestrzeń
+                        dopracowaną pod klucz. Żadnego chaosu produkcyjnego. Po prostu praca
+                        wykonana prawidłowo od początku do końca.
                     </p>
                 </div>
             </div>
@@ -114,42 +148,42 @@
             <div class="story-grid" style="align-items: start">
                 <div>
                     <p class="subtitle">Krok po kroku</p>
-                    <h2>Jak zbudujemy Twoją kuchnię. Transparentny harmonogram prac.</h2>
-                    <a href="#contact" class="btn">Chcę przejść ten proces z wami</a>
+                    <h2>Jak zbudujemy Twoją kuchnię. Ty decydujesz, my pracujemy.</h2>
                 </div>
                 <div class="process-list">
                     <div class="process-item">
-                        <h3>Spotkanie przy stole we Wrocławiu</h3>
+                        <h3>1. Spotkanie i Twoja Wizja</h3>
                         <p>
-                            Rozmawiamy o nawykach, oglądamy inspiracje i rzut od dewelopera (lub
-                            jedziemy zmierzyć ściany inwentaryzując otoczenie). Bez zobowiązań
-                            budujemy pierwszy „draft” oczekiwań.
+                            Rozmawiamy o Twoich potrzebach, oglądamy inspiracje i rzut od
+                            dewelopera. Jeśli wiesz czego chcesz – słuchamy. Jeśli nie masz pomysłu
+                            – proponujemy gotowe, sprawdzone rozwiązania.
                         </p>
                     </div>
                     <div class="process-item">
-                        <h3>Koncepcja materiałowo-architektoniczna</h3>
+                        <h3>2. Koncepcja i Ergonomia</h3>
                         <p>
                             Lucyna prezentuje warianty palety i sprytne wykorzystania ukrytych
-                            ciągów funkcjonalnych, pracując w obrębie przyjętego budżetu na meble
-                            robocze.
+                            ciągów funkcjonalnych. Dopracowujemy projekt tak długo, aż powiesz "to
+                            jest to".
                         </p>
                     </div>
                     <div class="process-item">
-                        <h3>Środowisko CAD i cięcie numeryczne</h3>
+                        <h3>3. Środowisko CAD i Produkcja</h3>
                         <p>
                             Przekładamy koncepcję na bezkolizyjny model 3D. Gotowe pliki produkcyjne
-                            trafiają bezpośrednio do nowoczesnego parku maszynowego naszych
-                            partnerów, gdzie płyty cięte są z ułamkową precyzją.
+                            trafiają do nowoczesnego parku maszynowego. Ty nie musisz się martwić o
+                            zamówienia, okucia czy logistykę – to nasza rola.
                         </p>
                     </div>
                     <div class="process-item">
-                        <h3>Montaż i oddanie kluczy</h3>
+                        <h3>4. Montaż i Oddanie Kluczy</h3>
                         <p>
-                            Nadzorujemy pracę zaufanych ekip montażowych. Dbamy o czystość, detale i
-                            idealne spasowanie elementów. Oddajemy Ci gotową przestrzeń, zdejmując z
-                            Twoich barków cały stres związany z wykończeniem.
+                            Wchodzimy do mieszkania i montujemy. Jeśli pojawią się wyzwania –
+                            bierzemy je na siebie i wprowadzamy poprawki. Dbamy o czystość i detale.
+                            Oddajemy Ci gotową do użytku przestrzeń.
                         </p>
                     </div>
+                    <a href="#contact" class="btn">Chcę przejść ten proces z wami</a>
                 </div>
             </div>
         </section>
@@ -176,7 +210,7 @@
                     <p>
                         Wyzwanie: optymalizacja układu w kształcie litery U oraz sprytne ukrycie
                         szachtu kominowego, przy zachowaniu minimalistycznej formy w naturalnym
-                        fornirze.
+                        fornirze. Kompleksowa realizacja pod klucz.
                     </p>
                 </div>
                 <div class="portfolio-item">
@@ -191,7 +225,8 @@
                     <h3 style="margin-top: 1rem; font-size: 1.4rem">Segment na Jagodnie</h3>
                     <p>
                         Wyzwanie: dopasowanie zabudowy do skosów i nietypowej wnęki korytarzowej.
-                        Połączenie surowego betonu z ciepłym, matowym drewnem.
+                        Połączenie surowego betonu z ciepłym, matowym drewnem. Klient odebrał
+                        gotową, posprzątaną kuchnię.
                     </p>
                 </div>
             </div>
@@ -204,19 +239,29 @@
 
                 <div style="margin-top: 3rem">
                     <details>
+                        <summary>Co jeśli podczas montażu coś nie będzie pasować?</summary>
+                        <p>
+                            To nasz problem, nie Twój. Bierzemy pełną odpowiedzialność za pomiary,
+                            projekt i montaż. Jeśli ściana dewelopera okaże się bardziej krzywa niż
+                            zakładały normy, my organizujemy poprawki, docinamy blendy i
+                            doprowadzamy realizację do perfekcji. Ty czekasz na gotowy efekt.
+                        </p>
+                    </details>
+                    <details>
                         <summary>
                             Jesteście pracownią (fabless). Kto w takim razie tnie i składa meble?
                         </summary>
                         <p>
                             Nie utrzymujemy własnego, drogiego parku maszynowego. Skupiamy się na
-                            precyzyjnym projekcie i nadzorze, a samo cięcie i okleinowanie płyt
-                            zlecamy wyspecjalizowanym centrom CNC. Dzięki temu masz dostęp do
-                            każdego materiału na rynku, a Twój budżet inwestowany jest w jakość, nie
-                            w utrzymanie naszej stolarni.
+                            precyzyjnym projekcie, obsłudze klienta i montażu. Samo cięcie i
+                            okleinowanie płyt zlecamy wyspecjalizowanym centrom CNC. Dzięki temu
+                            masz dostęp do każdego materiału na rynku, a Twój budżet inwestowany
+                            jest w jakość i naszą pełną uwagę, nie w utrzymanie wielkiej hali
+                            produkcyjnej.
                         </p>
                     </details>
                     <details>
-                        <summary>Jak radzicie sobie z błędami i krzywiznami od dewelopera?</summary>
+                        <summary>Jak radzicie sobie z błędami od dewelopera?</summary>
                         <p>
                             Pracujemy na dokładnych pomiarach z natury. W środowisku 3D weryfikujemy
                             każdą kolizję z instalacjami, gniazdkami czy krzywizną ścian, zanim
@@ -239,8 +284,8 @@
         <section id="contact">
             <div class="container">
                 <p class="subtitle">
-                    Zróbmy pierwszy krok. Opowiedz nam o swoim nowym mieszkaniu, a my przełożymy to
-                    na język architektury i ergonomii.
+                    Zróbmy pierwszy krok. Ty opowiedz nam o swoim nowym mieszkaniu, a my zajmiemy
+                    się całą resztą.
                 </p>
                 <br />
                 <h2 style="font-size: 3rem">
@@ -263,7 +308,7 @@
                         href="mailto:biuro@duodraft.pl"
                         class="btn btn-solid"
                         style="margin-top: 2rem"
-                        >Zacznijmy projektować</a
+                        >Oddaj kuchnię w dobre ręce</a
                     >
                 </div>
             </div>
@@ -271,8 +316,8 @@
 
         <footer>
             <p>
-                &copy; 2025 DuoDraft. Wrocławska pracownia kuchni. Projektowanie i inżynieria
-                wnętrz.
+                &copy; 2025 DuoDraft. Wrocławska pracownia kuchni. Projektowanie, inżynieria i
+                kompleksowy montaż.
             </p>
         </footer>
     </body>
