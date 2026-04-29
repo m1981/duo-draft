@@ -118,7 +118,7 @@ p {
 
 .section-pad {
     /* padding-block zmienia TYLKO górę i dół, zostawiając boki w spokoju */
-    padding-block: 8rem;
+    padding-block: 2rem;
 }
 
 /* === HEADER / NAWIGACJA === */
