@@ -433,6 +433,46 @@
             .gallery-item p {
                 font-size: 0.95rem;
             }
+            .gallery-item img {
+                cursor: pointer;
+            }
+
+            /* LIGHTBOX */
+            .lightbox {
+                display: none;
+                position: fixed;
+                inset: 0;
+                z-index: 9999;
+                background: rgba(0, 0, 0, 0.92);
+                justify-content: center;
+                align-items: center;
+                padding: 2rem;
+            }
+            .lightbox[aria-hidden='false'] {
+                display: flex;
+            }
+            .lightbox-img {
+                max-width: 90vw;
+                max-height: 90vh;
+                object-fit: contain;
+                border-radius: 2px;
+            }
+            .lightbox-close {
+                position: absolute;
+                top: 1.5rem;
+                right: 2rem;
+                background: none;
+                border: none;
+                color: white;
+                font-size: 2.5rem;
+                cursor: pointer;
+                line-height: 1;
+                opacity: 0.7;
+                transition: opacity 0.2s;
+            }
+            .lightbox-close:hover {
+                opacity: 1;
+            }
 
             /* STICKY MOBILE BAR */
             .mobile-bar {
@@ -1244,6 +1284,12 @@
             </p>
         </footer>
 
+        <!-- ============ LIGHTBOX ============ -->
+        <div class="lightbox" aria-hidden="true" role="dialog">
+            <button class="lightbox-close" aria-label="Zamknij">×</button>
+            <img class="lightbox-img" src="" alt="" />
+        </div>
+
         <!-- ============ STICKY MOBILE BAR ============ -->
         <nav class="mobile-bar" aria-label="Szybki kontakt">
             <a href="tel:+48573309200">📞 Zadzwoń</a>
@@ -1296,6 +1342,39 @@
                 const mq = window.matchMedia('(min-width: 901px)');
                 mq.addEventListener('change', (e) => {
                     if (e.matches) setOpen(false);
+                });
+            })();
+
+            // 3) Lightbox
+            (function () {
+                const lightbox = document.querySelector('.lightbox');
+                const lightboxImg = lightbox.querySelector('.lightbox-img');
+                const closeBtn = lightbox.querySelector('.lightbox-close');
+
+                const open = (src, alt) => {
+                    lightboxImg.src = src;
+                    lightboxImg.alt = alt || '';
+                    lightbox.setAttribute('aria-hidden', 'false');
+                    document.body.style.overflow = 'hidden';
+                };
+                const close = () => {
+                    lightbox.setAttribute('aria-hidden', 'true');
+                    lightboxImg.src = '';
+                    document.body.style.overflow = '';
+                };
+
+                // Kliknij zdjęcie w galerii
+                document.querySelectorAll('.gallery-item img').forEach((img) => {
+                    img.addEventListener('click', () => open(img.src, img.alt));
+                });
+
+                // Zamknij: X, backdrop, Escape
+                closeBtn.addEventListener('click', close);
+                lightbox.addEventListener('click', (e) => {
+                    if (e.target === lightbox) close();
+                });
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') close();
                 });
             })();
         </script>
