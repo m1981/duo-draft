@@ -3,83 +3,764 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>DuoDraft | Kuchnie na miarę</title>
+        <title>Kuchnie na wymiar Wrocław — pod klucz | DuoDraft</title>
+        <meta
+            name="description"
+            content="Kuchnia pod klucz dla Twojego mieszkania we Wrocławiu. Projekt, produkcja CNC i montaż w około 3 tygodnie od pomiaru. Duet projektant + inżynier. Bezpłatny pomiar."
+        />
+        <meta
+            name="keywords"
+            content="kuchnie na wymiar Wrocław, meble kuchenne Wrocław, zabudowa kuchenna, kuchnia pod klucz, projektowanie kuchni Wrocław"
+        />
+
+        <!-- Open Graph -->
+        <meta property="og:title" content="Kuchnie na wymiar Wrocław — pod klucz | DuoDraft" />
+        <meta
+            property="og:description"
+            content="Projekt, produkcja i montaż Twojej kuchni w około 3 tygodnie od pomiaru. Bez stresu deweloperskiego."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="pl_PL" />
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap"
             rel="stylesheet"
         />
         <link rel="stylesheet" href="common.css" />
-        <style>
-            /* Dodatkowy styl dla listy korzyści w sekcji Hero, aby wyglądała elegancko */
-            .hero-benefits {
-                list-style: none;
-                padding: 0;
-                margin: 2rem 0;
-                text-align: left;
-                display: inline-block;
+
+        <!-- Schema.org: LocalBusiness -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "LocalBusiness",
+                "name": "DuoDraft",
+                "image": "https://duodraft.pl/og-image.jpg",
+                "description": "Pracownia kuchni na wymiar we Wrocławiu. Projekt, produkcja CNC i montaż pod klucz.",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Wrocław",
+                    "addressCountry": "PL"
+                },
+                "telephone": "+48573309200",
+                "email": "biuro@duodraft.pl",
+                "url": "https://duodraft.pl",
+                "areaServed": "Wrocław i okolice",
+                "priceRange": "$$$"
             }
-            .hero-benefits li {
-                margin-bottom: 1rem;
-                font-size: 1.1rem;
-                line-height: 1.5;
-                position: relative;
+        </script>
+
+        <!-- Schema.org: FAQPage -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "Ile kosztuje kuchnia na wymiar we Wrocławiu?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Nasze realizacje pod klucz startują od ok. 25 000 zł za małe kuchnie w kawalerkach, a typowy budżet apartamentowy mieści się w przedziale 40 000–70 000 zł. Wycenę przygotowujemy w 5 dni roboczych od pomiaru."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Ile trwa realizacja kuchni od pomiaru do montażu?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Około 3 tygodnie od dnia pomiaru do oddania kluczy. Na to składa się: 1 dzień pomiar i próbki, 2–3 dni projekt 3D CAD, do 2 tygodni produkcja u partnera CNC, 4–5 dni montaż i poprawki. Termin liczony od dnia pomiaru — dokładny harmonogram potwierdzamy przy akceptacji projektu (zależy od aktualnej kolejki CNC)."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Czy macie stacjonarny salon?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Nie. Działamy jako mobilna pracownia — przyjeżdżamy do Ciebie z próbnikami materiałów. Wybierasz kolory w naturalnym świetle swojego mieszkania, nie w sztucznie oświetlonym sklepie."
+                        }
+                    }
+                ]
+            }
+        </script>
+
+        <style>
+            /* === DODATKI v2 — przeniesiemy do common.css po akceptacji === */
+
+            /* HEADER z telefonem */
+            header .header-cta {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                margin-left: auto;
                 padding-left: 2rem;
             }
-            .hero-benefits li::before {
-                content: '✓';
+            header .phone-link {
+                color: var(--white);
+                font-size: 0.95rem;
+                font-weight: 500;
+                letter-spacing: 0.5px;
+                white-space: nowrap;
+                display: flex;
+                align-items: center;
+                gap: 0.4rem;
+            }
+            header .phone-link:hover {
+                color: var(--accent);
+            }
+            header .btn-mini {
+                display: inline-block;
+                padding: 0.6rem 1.2rem;
+                background: var(--accent);
+                color: var(--white);
+                font-size: 0.8rem;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                border: 1px solid var(--accent);
+                transition: all 0.3s ease;
+            }
+            header .btn-mini:hover {
+                background: transparent;
+                color: var(--white);
+            }
+
+            /* HERO — nowe elementy */
+            #hero h1 {
+                font-size: 4.2rem;
+                max-width: 900px;
+                margin: 0 auto 1.5rem;
+            }
+            .hero-sub {
+                font-size: 1.25rem;
+                max-width: 720px;
+                margin: 0 auto 2.5rem;
+                color: rgba(255, 255, 255, 0.92);
+            }
+            .hero-ctas {
+                display: flex;
+                gap: 1rem;
+                justify-content: center;
+                flex-wrap: wrap;
+                margin-bottom: 3rem;
+            }
+            .hero-ctas .btn {
+                margin-top: 0;
+            }
+            .trust-bar {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 2.5rem;
+                justify-content: center;
+                padding-top: 2rem;
+                border-top: 1px solid rgba(255, 255, 255, 0.15);
+                margin-top: 2rem;
+                max-width: 800px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .trust-item {
+                color: rgba(255, 255, 255, 0.85);
+                font-size: 0.9rem;
+                letter-spacing: 0.5px;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            .trust-item strong {
+                color: var(--white);
+                font-weight: 600;
+            }
+
+            /* SEKCJA PROBLEM */
+            #problem {
+                background: var(--white);
+            }
+            .problem-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2.5rem;
+                margin-top: 3rem;
+            }
+            .problem-card {
+                padding: 2rem;
+                background: var(--bg-color);
+                border-left: 3px solid var(--accent);
+            }
+            .problem-card h3 {
+                font-size: 1.4rem;
+                margin-bottom: 0.8rem;
+            }
+            .problem-card p {
+                font-size: 0.98rem;
+            }
+
+            /* USŁUGI */
+            .services-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+                margin-top: 3rem;
+            }
+            .service-card {
+                padding: 2.5rem 2rem;
+                border: 1px solid var(--border);
+                background: var(--white);
+                transition:
+                    transform 0.3s ease,
+                    box-shadow 0.3s ease;
+            }
+            .service-card:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+            }
+            .service-card h3 {
+                font-size: 1.6rem;
+                margin-bottom: 0.5rem;
+            }
+            .service-price {
+                font-family: var(--font-heading);
+                font-size: 1.3rem;
+                color: var(--accent);
+                margin: 1rem 0;
+                font-weight: 500;
+            }
+            .service-card ul {
+                list-style: none;
+                margin: 1rem 0;
+                padding: 0;
+            }
+            .service-card ul li {
+                padding: 0.4rem 0;
+                padding-left: 1.5rem;
+                position: relative;
+                font-size: 0.95rem;
+                color: var(--text-muted);
+            }
+            .service-card ul li::before {
+                content: '·';
                 position: absolute;
                 left: 0;
-                color: #d4af37; /* Złoty/Premium akcent, dopasuj do swojego CSS jeśli masz zmienne */
+                color: var(--accent);
                 font-weight: bold;
+                font-size: 1.4rem;
+                line-height: 1;
+            }
+
+            /* DUET */
+            #duet {
+                background: var(--white);
+            }
+            .duet-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 4rem;
+                margin-top: 4rem;
+                align-items: start;
+            }
+            .duet-card {
+                text-align: center;
+            }
+            .duet-photo {
+                width: 100%;
+                max-width: 320px;
+                aspect-ratio: 1 / 1;
+                margin: 0 auto 1.5rem;
+                border-radius: 50%;
+                background: var(--bg-color);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: var(--text-muted);
+                font-size: 0.9rem;
+                overflow: hidden;
+                border: 1px solid var(--border);
+            }
+            .duet-photo img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            .duet-card h3 {
+                font-size: 1.8rem;
+                margin-bottom: 0.3rem;
+            }
+            .duet-role {
+                color: var(--accent);
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                font-size: 0.8rem;
+                margin-bottom: 1.2rem;
+                font-weight: 500;
+            }
+
+            /* OPINIE */
+            #reviews {
+                background: var(--bg-color);
+            }
+            .reviews-header {
+                display: flex;
+                align-items: center;
+                gap: 2rem;
+                margin-bottom: 3rem;
+                flex-wrap: wrap;
+            }
+            .reviews-score {
+                font-family: var(--font-heading);
+                font-size: 3.5rem;
+                color: var(--text-main);
+                line-height: 1;
+            }
+            .reviews-meta {
+                display: flex;
+                flex-direction: column;
+                gap: 0.3rem;
+            }
+            .stars {
+                color: #f5a623;
+                font-size: 1.3rem;
+                letter-spacing: 2px;
+            }
+            .reviews-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+            }
+            .review-card {
+                background: var(--white);
+                padding: 2rem;
+                border: 1px solid var(--border);
+            }
+            .review-card .stars {
+                font-size: 1rem;
+                margin-bottom: 1rem;
+            }
+            .review-card blockquote {
+                font-style: italic;
+                color: var(--text-main);
+                margin-bottom: 1.2rem;
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+            .review-author {
+                font-size: 0.9rem;
+                color: var(--text-muted);
+                border-top: 1px solid var(--border);
+                padding-top: 1rem;
+            }
+            .review-author strong {
+                color: var(--text-main);
+                display: block;
+                margin-bottom: 0.2rem;
+            }
+
+            /* FORMULARZ */
+            .contact-form {
+                max-width: 560px;
+                margin: 3rem auto 0;
+                text-align: left;
+                background: rgba(255, 255, 255, 0.05);
+                padding: 2.5rem;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            .contact-form .form-row {
+                margin-bottom: 1.2rem;
+            }
+            .contact-form label {
+                display: block;
+                font-size: 0.85rem;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                color: rgba(255, 255, 255, 0.7);
+                margin-bottom: 0.5rem;
+            }
+            .contact-form input,
+            .contact-form textarea {
+                width: 100%;
+                padding: 0.9rem 1rem;
+                background: rgba(255, 255, 255, 0.08);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                color: var(--white);
+                font-family: var(--font-body);
+                font-size: 1rem;
+                transition: border 0.3s ease;
+            }
+            .contact-form input:focus,
+            .contact-form textarea:focus {
+                outline: none;
+                border-color: var(--accent);
+            }
+            .contact-form textarea {
+                min-height: 100px;
+                resize: vertical;
+            }
+            .contact-form .btn-solid {
+                width: 100%;
+                margin-top: 1rem;
+                cursor: pointer;
+                font-size: 0.9rem;
+                padding: 1.1rem;
+            }
+            .form-consent {
+                font-size: 0.75rem;
+                color: rgba(255, 255, 255, 0.6);
+                margin-top: 1rem;
+                line-height: 1.5;
+            }
+
+            /* GALLERY — rozstrzelona siatka realizacji (CSS Grid, bez JS) */
+            .gallery-grid {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                margin-top: 3rem;
+            }
+            .gallery-item img {
+                width: 100%;
+                aspect-ratio: 4 / 3;
+                object-fit: cover;
+                display: block;
+            }
+            .gallery-item h3 {
+                margin-top: 1rem;
+                font-size: 1.3rem;
+            }
+            .gallery-item p {
+                font-size: 0.95rem;
+            }
+            @media (min-width: 901px) {
+                .gallery-grid {
+                    grid-template-columns: repeat(12, 1fr);
+                    gap: 2rem 2rem;
+                }
+                /* Rozstrzelony układ: różne szerokości i offsety na 12-kolumnowej siatce */
+                .gallery-item:nth-child(1) {
+                    grid-column: 1 / span 7;
+                }
+                .gallery-item:nth-child(2) {
+                    grid-column: 9 / span 4;
+                    margin-top: 4rem;
+                }
+                .gallery-item:nth-child(3) {
+                    grid-column: 1 / span 5;
+                }
+                .gallery-item:nth-child(4) {
+                    grid-column: 7 / span 6;
+                    margin-top: -3rem;
+                }
+                .gallery-item:nth-child(5) {
+                    grid-column: 2 / span 6;
+                }
+                .gallery-item:nth-child(6) {
+                    grid-column: 9 / span 4;
+                    margin-top: 5rem;
+                }
+                .gallery-item:nth-child(7) {
+                    grid-column: 4 / span 6;
+                }
+            }
+
+            /* STICKY MOBILE BAR */
+            .mobile-bar {
+                display: none;
+            }
+            @media (max-width: 900px) {
+                .mobile-bar {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr 1fr;
+                    position: fixed;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    background: var(--text-main);
+                    border-top: 1px solid rgba(255, 255, 255, 0.1);
+                    z-index: 998;
+                }
+                .mobile-bar a {
+                    padding: 0.9rem 0.5rem;
+                    text-align: center;
+                    color: var(--white);
+                    font-size: 0.75rem;
+                    letter-spacing: 1px;
+                    text-transform: uppercase;
+                    border-right: 1px solid rgba(255, 255, 255, 0.1);
+                }
+                .mobile-bar a:last-child {
+                    border-right: none;
+                }
+                .mobile-bar a.primary {
+                    background: var(--accent);
+                }
+                body {
+                    padding-bottom: 60px;
+                }
+            }
+
+            /* RWD dla nowych gridów */
+            @media (max-width: 900px) {
+                .problem-grid,
+                .services-grid,
+                .reviews-grid,
+                .duet-grid {
+                    grid-template-columns: 1fr;
+                    gap: 2rem;
+                }
+                #hero h1 {
+                    font-size: 2.6rem;
+                }
+                .hero-sub {
+                    font-size: 1.05rem;
+                }
+                /* Na mobile ukrywamy desktopowe CTA z telefonem — ich rolę przejmuje hamburger */
+                header .header-cta {
+                    display: none !important;
+                }
+                .reviews-header {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 1rem;
+                }
+            }
+
+            /* FOOTER NAP */
+            .footer-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 3rem;
+                text-align: left;
+                max-width: 1200px;
+                margin: 0 auto 2rem;
+                padding: 3rem clamp(1.5rem, 5vw, 3rem) 2rem;
+            }
+            .footer-grid h4 {
+                color: var(--white);
+                font-family: var(--font-heading);
+                font-size: 1.3rem;
+                margin-bottom: 1rem;
+                font-weight: 500;
+            }
+            .footer-grid p,
+            .footer-grid a {
+                color: #aaa;
+                font-size: 0.9rem;
+                line-height: 1.8;
+                display: block;
+            }
+            .footer-grid a:hover {
+                color: var(--accent);
+            }
+            @media (max-width: 900px) {
+                .footer-grid {
+                    grid-template-columns: 1fr;
+                    gap: 2rem;
+                }
             }
         </style>
     </head>
     <body>
         <header>
-            <div class="logo">DuoDraft</div>
-            <nav>
-                <a href="#approach">Podejście</a>
-                <a href="#story">O nas</a>
+            <a href="#hero" class="logo">DuoDraft</a>
+            <nav aria-label="Główna nawigacja">
+                <a href="#problem">Dla kogo</a>
+                <a href="#services">Usługi</a>
+                <a href="#duet">Duet</a>
                 <a href="#process">Proces</a>
-                <a href="#contact">Kontakt</a>
+                <a href="#reviews">Opinie</a>
+                <a href="#faq">FAQ</a>
             </nav>
+            <div class="header-cta">
+                <a href="tel:+48573309200" class="phone-link">📞 +48 573 309 200</a>
+                <a href="#contact" class="btn-mini">Umów pomiar</a>
+            </div>
+            <button
+                class="hamburger"
+                aria-label="Otwórz menu"
+                aria-expanded="false"
+                aria-controls="mobile-drawer"
+                type="button"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </header>
 
+        <!-- Mobile drawer (widoczny tylko na mobile, ster. JS-em) -->
+        <div class="drawer-backdrop" data-open="false" aria-hidden="true"></div>
+        <nav
+            id="mobile-drawer"
+            class="mobile-drawer"
+            data-open="false"
+            aria-label="Menu mobilne"
+            aria-hidden="true"
+        >
+            <a href="#problem">Dla kogo</a>
+            <a href="#services">Usługi</a>
+            <a href="#duet">Duet</a>
+            <a href="#process">Proces</a>
+            <a href="#reviews">Opinie</a>
+            <a href="#faq">FAQ</a>
+            <a href="tel:+48573309200" class="drawer-phone">📞 +48 573 309 200</a>
+            <a href="#contact" class="drawer-cta">Umów bezpłatny pomiar</a>
+        </nav>
+
+        <!-- ============ HERO ============ -->
         <section id="hero">
             <div class="container">
-                <p class="subtitle" style="color: white">Kompleksowe realizacje we Wrocławiu</p>
-                <h1>Twoja nowa kuchnia od A do Z.</h1>
-                <p style="max-width: 700px; margin: 0 auto">
-                    Zdejmujemy z Ciebie cały stres związany z urządzaniem. Od pierwszej kreski na
-                    projekcie, aż po ostatnią wkręconą śrubkę.
+                <span class="subtitle" style="color: var(--accent)"
+                    >Kuchnie pod klucz · Wrocław</span
+                >
+                <h1>
+                    Odbierasz klucze. My oddajemy gotową kuchnię.<br /><span
+                        style="color: var(--accent)"
+                        >W 3 tygodnie.<sup style="font-size: 0.5em; vertical-align: super"
+                            >*</sup
+                        ></span
+                    >
+                </h1>
+                <p class="hero-sub">
+                    Projekt, produkcja CNC i montaż dla Twojego mieszkania we Wrocławiu. Od pomiaru
+                    do oddania kluczy w około 3 tygodnie. Bez 5 firm do ogarnięcia.
                 </p>
 
-                <ul class="hero-benefits">
-                    <li>
-                        <strong>Twój pomysł lub nasza wizja:</strong> Przełożymy Twoje oczekiwania
-                        na techniczne realia. Nie masz pomysłu? Zaprojektujemy przestrzeń, która Cię
-                        zachwyci.
-                    </li>
-                    <li>
-                        <strong>Proces "Bez Stresu":</strong> Ty mówisz, czego potrzebujesz, a my
-                        organizujemy wszystko – od pomiarów, przez zamówienia, aż po logistykę.
-                    </li>
-                    <li>
-                        <strong>Montaż i pełna odpowiedzialność:</strong> Wchodzimy, montujemy,
-                        bierzemy na siebie ewentualne poprawki. Zostawiamy po sobie czystą, gotową
-                        kuchnię.
-                    </li>
-                </ul>
-                <br />
-                <a href="#contact" class="btn">Oddaj kuchnię w dobre ręce</a>
+                <div class="hero-ctas">
+                    <a href="#contact" class="btn btn-solid">Umów bezpłatny pomiar</a>
+                    <a href="#portfolio" class="btn">Zobacz realizacje</a>
+                </div>
+
+                <div class="trust-bar">
+                    <div class="trust-item">
+                        <span class="stars">★★★★★</span>
+                        <span><strong>4.9/5</strong> Google (47 opinii)</span>
+                    </div>
+                    <div class="trust-item"><strong>60+</strong> zrealizowanych kuchni</div>
+                    <div class="trust-item">Na rynku od <strong>2019</strong></div>
+                    <div class="trust-item">Wrocław i okolice <strong>30 km</strong></div>
+                </div>
+
+                <p
+                    style="
+                        margin: 1.5rem auto 0;
+                        font-size: 0.85rem;
+                        color: rgba(255, 255, 255, 0.65);
+                        max-width: 720px;
+                    "
+                >
+                    <sup>*</sup> Realny czas od dnia pomiaru do oddania kluczy. Dokładny termin
+                    potwierdzamy przy akceptacji projektu — zależy od aktualnej kolejki naszego
+                    partnera CNC. Rynkowy standard: 8–12 tygodni.
+                </p>
             </div>
         </section>
 
+        <!-- ============ PROBLEM ============ -->
+        <section id="problem" class="section-pad">
+            <div class="container">
+                <div style="text-align: center; max-width: 800px; margin: 0 auto">
+                    <span class="subtitle">Znasz to?</span>
+                    <h2>
+                        Stan deweloperski to nie jest kuchnia.<br />To 5 problemów do rozwiązania.
+                    </h2>
+                </div>
+                <div class="problem-grid">
+                    <div class="problem-card">
+                        <h3>Krzywe ściany dewelopera</h3>
+                        <p>
+                            Odchyłki 2–3 cm na 3 metrach to standard. Stolarz z katalogu nie ma jak
+                            tego uwzględnić. Efekt: szczeliny, blendy na siłę, kompromisy.
+                        </p>
+                    </div>
+                    <div class="problem-card">
+                        <h3>Pięć firm do skoordynowania</h3>
+                        <p>
+                            Projektant, stolarz, monter, elektryk, hydraulik. Każdy zwala winę na
+                            poprzedniego. Ty stoisz w środku i tłumaczysz każdemu wszystko.
+                        </p>
+                    </div>
+                    <div class="problem-card">
+                        <h3>Kolizje, których nie widać na rzucie</h3>
+                        <p>
+                            Gniazdko za szafką, rura odpływu w złym miejscu, niski parapet. Wychodzą
+                            dopiero na montażu — gdy jest za późno na zmiany.
+                        </p>
+                    </div>
+                </div>
+                <p
+                    style="
+                        text-align: center;
+                        margin-top: 3rem;
+                        font-size: 1.15rem;
+                        color: var(--text-main);
+                    "
+                >
+                    <strong>Bierzemy to wszystko na siebie.</strong>
+                    Ty dajesz nam rzut i klucze. My oddajemy gotową kuchnię.
+                </p>
+            </div>
+        </section>
+
+        <!-- ============ USŁUGI ============ -->
+        <section id="services" class="section-pad container">
+            <div style="text-align: center; max-width: 800px; margin: 0 auto">
+                <span class="subtitle">Zakres prac</span>
+                <h2>Co dla Ciebie robimy — i ile to kosztuje.</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Kuchnia pod klucz</h3>
+                    <div class="service-price">od 25 000 zł</div>
+                    <p>
+                        Pełna obsługa od rzutu dewelopera po ostatnią śrubkę. Idealne dla mieszkań w
+                        stanie deweloperskim.
+                    </p>
+                    <ul>
+                        <li>Pomiar i projekt 3D CAD</li>
+                        <li>Produkcja u partnerów CNC</li>
+                        <li>Sprzęt AGD (jeśli chcesz)</li>
+                        <li>Montaż i poprawki</li>
+                        <li>Czas: ok. 3 tygodnie od pomiaru</li>
+                    </ul>
+                    <a href="#contact" class="btn">Umów pomiar</a>
+                </div>
+                <div class="service-card">
+                    <h3>Zabudowy dodatkowe</h3>
+                    <div class="service-price">od 8 000 zł</div>
+                    <p>
+                        Garderoby, szafy wnękowe, zabudowa łazienki, pralni czy korytarza. W jednym
+                        spójnym języku z kuchnią.
+                    </p>
+                    <ul>
+                        <li>Garderoby i szafy wnękowe</li>
+                        <li>Zabudowa łazienkowa</li>
+                        <li>Pralnia, korytarz, schowki</li>
+                        <li>Te same materiały, ten sam zespół</li>
+                        <li>Czas: 4–8 tygodni</li>
+                    </ul>
+                    <a href="#contact" class="btn">Zapytaj o wycenę</a>
+                </div>
+                <div class="service-card">
+                    <h3>Konsultacja projektowa</h3>
+                    <div class="service-price">800 zł</div>
+                    <p>
+                        Nie jesteś jeszcze gotów na pełną realizację? Zamów konsultację — kwota
+                        odejmowana od późniejszego projektu.
+                    </p>
+                    <ul>
+                        <li>2h spotkanie u Ciebie</li>
+                        <li>Próbniki materiałów</li>
+                        <li>Wstępny szkic układu</li>
+                        <li>Wycena widełkowa</li>
+                        <li>Kwota wraca przy zleceniu</li>
+                    </ul>
+                    <a href="#contact" class="btn">Umów konsultację</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ DLACZEGO MY (Filary) ============ -->
         <section id="approach" class="section-pad container">
             <div style="text-align: center; max-width: 800px; margin: 0 auto">
-                <p class="subtitle">Dlaczego my</p>
+                <span class="subtitle">Dlaczego my</span>
                 <h2>Dobry projekt potrzebuje ciszy<br />i dwóch różnych spojrzeń.</h2>
                 <p>
                     Wykończenie mieszkania we wrocławskim stanie deweloperskim to stres i wyścig o
@@ -94,8 +775,7 @@
                     <h3>Wyczucie (Lucyna)</h3>
                     <p>
                         Estetyka, która oddycha. Opowiesz nam, jak spędzasz poranki, a my zadbamy o
-                        kompozycje faktur, barwy materiałów i czystą ludzką wygodę na co dzień. Ty
-                        wybierasz, my dopasowujemy.
+                        kompozycje faktur, barwy materiałów i czystą ludzką wygodę na co dzień.
                     </p>
                 </div>
                 <div class="pillar">
@@ -103,243 +783,569 @@
                     <h3>Precyzja (Michał)</h3>
                     <p>
                         Język wektorów. Każda idea przeliczana jest na twarde parametry w
-                        profesjonalnych środowiskach 3D CAD/CAM. Szukamy milimetrów i bezlitośnie
-                        eliminujemy kolizje instalacyjne, żeby na montażu nie było niespodzianek.
+                        profesjonalnych środowiskach 3D CAD/CAM. Bezlitośnie eliminujemy kolizje
+                        instalacyjne.
                     </p>
                 </div>
                 <div class="pillar">
                     <span>03.</span>
                     <h3>Technologia (Fabless)</h3>
                     <p>
-                        Jako pracownia uciekliśmy od kurzu tradycyjnej stolarni. Gotowy model
-                        maszyny sterowane numerycznie wycinają u naszych partnerów pod miastem z
-                        niedoścignioną jakością formatu. My skupiamy się w 100% na obsłudze Twojego
+                        Maszyny CNC u naszych partnerów pod miastem tną z niedoścignioną precyzją
+                        formatu. Bez kurzu stolarni — 100% naszej uwagi idzie w obsługę Twojego
                         zlecenia.
                     </p>
                 </div>
             </div>
         </section>
 
-        <section id="story" class="section-pad">
-            <div class="container story-grid">
-                <div class="story-text">
-                    <p class="subtitle">Nasze DNA</p>
-                    <h2>Dorastaliśmy wśród projektów. Został nam po tym szacunek.</h2>
+        <!-- ============ DUET ============ -->
+        <section id="duet" class="section-pad">
+            <div class="container">
+                <div style="text-align: center; max-width: 800px; margin: 0 auto">
+                    <span class="subtitle">Z kim się spotkasz</span>
+                    <h2>Nie wysyłamy handlowca. Przyjeżdżamy my.</h2>
                     <p>
-                        Z rzutami wnętrz oswajaliśmy się, zanim jeszcze w pełni potrafiliśmy pisać.
-                        Z racji zawodów naszych rodziców, dom był pełen zapachu kalek, a najlepszymi
-                        zabawkami na dywanie były drewniane krzywiki i ekierki podkradane z
-                        wielkiego stołu kreślarskiego. Szacunek do proporcji mamy we krwi – po
-                        architektonicznym spojrzeniu mamy i inżynieryjnym uporze taty.
+                        Lucyna i Michał — rodzeństwo, które dorastało wśród projektów rodziców
+                        architektów. Z rzutami wnętrz oswajaliśmy się wcześniej niż z pisaniem.
+                        Szacunek do proporcji mamy we krwi.
                     </p>
-                    <br />
-                    <p>
-                        Podzieliliśmy się tym, co robimy najlepiej. Lucyna wnosi wrażliwość i układ.
-                        Michał przekłada tę wizję na język oprogramowania inżynieryjnego. My
-                        bierzemy pełną odpowiedzialność za realizację, Ty zyskujesz przestrzeń
-                        dopracowaną pod klucz. Żadnego chaosu produkcyjnego. Po prostu praca
-                        wykonana prawidłowo od początku do końca.
-                    </p>
+                </div>
+
+                <div class="duet-grid">
+                    <div class="duet-card">
+                        <div class="duet-photo">
+                            <!-- TODO: prawdziwe zdjęcie Lucyny -->
+                            [Zdjęcie Lucyny]
+                        </div>
+                        <h3>Lucyna</h3>
+                        <div class="duet-role">Projekt &amp; Estetyka</div>
+                        <p>
+                            Wnosi wrażliwość, układ i wyczucie materiału. Pomoże Ci wybrać paletę,
+                            fakturę i sprytne rozwiązania funkcjonalne. To z nią ustalisz, jak Twoja
+                            kuchnia ma wyglądać i pracować na co dzień.
+                        </p>
+                    </div>
+                    <div class="duet-card">
+                        <div class="duet-photo">
+                            <!-- TODO: prawdziwe zdjęcie Michała -->
+                            [Zdjęcie Michała]
+                        </div>
+                        <h3>Michał</h3>
+                        <div class="duet-role">Inżynieria &amp; Realizacja</div>
+                        <p>
+                            Przekłada wizję na język CAD/CAM i nadzoruje produkcję u partnerów.
+                            Odpowiada za bezkolizyjny model 3D, pliki produkcyjne i sam montaż. Z
+                            nim ustalisz harmonogram i techniczne realia.
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
 
+        <!-- ============ PROCES ============ -->
         <section id="process" class="section-pad container">
             <div class="story-grid" style="align-items: start">
                 <div>
-                    <p class="subtitle">Krok po kroku</p>
+                    <span class="subtitle">Krok po kroku</span>
                     <h2>Jak zbudujemy Twoją kuchnię. Ty decydujesz, my pracujemy.</h2>
+                    <p style="margin-top: 1.5rem">
+                        Cały proces zajmuje <strong>około 3 tygodnie</strong> od dnia pomiaru do
+                        oddania kluczy. Bez niespodzianek terminowych.
+                    </p>
                 </div>
                 <div class="process-list">
                     <div class="process-item">
-                        <h3>1. Mobilne spotkanie i Twoja Wizja</h3>
+                        <h3>1. Pomiar i próbki u Ciebie</h3>
+                        <p style="font-size: 0.9rem; color: var(--accent); margin-bottom: 0.5rem">
+                            CZAS: 1 dzień · bezpłatnie
+                        </p>
                         <p>
-                            Szanujemy Twój czas, dlatego to my przyjeżdżamy do Ciebie. Spotykamy się
-                            na Twojej nowej inwestycji, w Twoim obecnym mieszkaniu lub przy dobrej
-                            kawie na mieście. Przywozimy ze sobą wzorniki materiałów. Jeśli wiesz
-                            czego chcesz – słuchamy. Jeśli nie masz pomysłu – proponujemy gotowe
-                            rozwiązania.
+                            Przyjeżdżamy do Ciebie z próbnikami materiałów — na inwestycję, do
+                            obecnego mieszkania lub na kawę. Mierzymy z natury, słuchamy,
+                            proponujemy rozwiązania. Wychodzimy z gotową koncepcją wstępną.
                         </p>
                     </div>
                     <div class="process-item">
-                        <h3>2. Koncepcja i Ergonomia</h3>
+                        <h3>2. Projekt 3D CAD</h3>
+                        <p style="font-size: 0.9rem; color: var(--accent); margin-bottom: 0.5rem">
+                            CZAS: 2–3 dni
+                        </p>
                         <p>
-                            Lucyna prezentuje warianty palety i sprytne wykorzystania ukrytych
-                            ciągów funkcjonalnych. Dopracowujemy projekt tak długo, aż powiesz "to
-                            jest to".
+                            Przekładamy pomiary i Twoje wybory na bezkolizyjny model 3D. Pokazujemy
+                            Ci finalne wizualizacje, kolory i warianty układu. Zatwierdzasz —
+                            przechodzimy do produkcji.
                         </p>
                     </div>
                     <div class="process-item">
-                        <h3>3. Środowisko CAD i Produkcja</h3>
+                        <h3>3. Produkcja CNC u partnera</h3>
+                        <p style="font-size: 0.9rem; color: var(--accent); margin-bottom: 0.5rem">
+                            CZAS: do 2 tygodni
+                        </p>
                         <p>
-                            Przekładamy koncepcję na bezkolizyjny model 3D. Gotowe pliki produkcyjne
-                            trafiają do nowoczesnego parku maszynowego. Ty nie musisz się martwić o
-                            zamówienia, okucia czy logistykę – to nasza rola.
+                            Pliki produkcyjne trafiają do naszego partnera CNC pod Wrocławiem.
+                            Frezowanie, oklejanie, okucia Blum/Hettich. Ty nie martwisz się o
+                            zamówienia ani logistykę — to nasza rola.
                         </p>
                     </div>
                     <div class="process-item">
-                        <h3>4. Montaż i Oddanie Kluczy</h3>
+                        <h3>4. Montaż i oddanie kluczy</h3>
+                        <p style="font-size: 0.9rem; color: var(--accent); margin-bottom: 0.5rem">
+                            CZAS: 4–5 dni
+                        </p>
                         <p>
-                            Wchodzimy do mieszkania i montujemy. Jeśli pojawią się wyzwania –
-                            bierzemy je na siebie i wprowadzamy poprawki. Dbamy o czystość i detale.
-                            Oddajemy Ci gotową do użytku przestrzeń.
+                            Montujemy, dopasowujemy do realiów ścian, robimy poprawki. Sprzątamy.
+                            Oddajemy gotową do użytku przestrzeń.
                         </p>
                     </div>
-                    <a href="#contact" class="btn">Chcę przejść ten proces z wami</a>
+                    <a href="#contact" class="btn">Umów bezpłatny pomiar</a>
                 </div>
             </div>
         </section>
 
+        <!-- ============ PORTFOLIO ============ -->
         <section id="portfolio" class="section-pad container">
-            <p class="subtitle">Wnętrza wykonane</p>
-            <h2>
-                Przestrzenie, które zaprojektowaliśmy. Zobacz, jak inżynieryjny spokój porządkuje
-                deweloperski chaos.
-            </h2>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <!-- Dodano loading="lazy" oraz atrybuty width/height -->
+            <span class="subtitle">Realizacje</span>
+            <h2>Wnętrza, które oddaliśmy.</h2>
+            <p style="max-width: 720px">
+                Każda kuchnia to inna inwestycja, inny rzut i inne wyzwanie deweloperskie. Zobacz,
+                jak inżynieryjny spokój porządkuje chaos stanu surowego.
+            </p>
+            <div class="gallery-grid">
+                <article class="gallery-item">
                     <img
-                        src="https://images.unsplash.com/photo-1556910103-1c02745a872f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                        alt="Nowoczesna biała kuchnia we Wrocławiu"
+                        src="img/realizacja-1-promenady-1200.jpg"
+                        srcset="
+                            img/realizacja-1-promenady-800.jpg   800w,
+                            img/realizacja-1-promenady-1200.jpg 1200w
+                        "
+                        sizes="(max-width: 900px) 100vw, 58vw"
+                        alt="Kuchnia na wymiar Wrocław — układ U, biel i dąb, czarne blaty"
                         loading="lazy"
-                        width="1000"
-                        height="667"
+                        width="1024"
+                        height="768"
                     />
-                    <h3 style="margin-top: 1rem; font-size: 1.4rem">
-                        Apartament Promenady Wrocławskie
-                    </h3>
+                    <h3>Apartament — Promenady Wrocławskie</h3>
                     <p>
-                        Wyzwanie: optymalizacja układu w kształcie litery U oraz sprytne ukrycie
-                        szachtu kominowego, przy zachowaniu minimalistycznej formy w naturalnym
-                        fornirze. Kompleksowa realizacja pod klucz.
+                        Układ U z panoramicznym oknem pasowym. Matowy dąb naturalny, biel i czarne
+                        blaty kompozytowe.
                     </p>
+                </article>
+
+                <article class="gallery-item">
+                    <img
+                        src="img/realizacja-2-jagodno-1200.jpg"
+                        srcset="
+                            img/realizacja-2-jagodno-800.jpg   800w,
+                            img/realizacja-2-jagodno-1200.jpg 1200w
+                        "
+                        sizes="(max-width: 900px) 100vw, 33vw"
+                        alt="Kuchnia na wymiar Wrocław — krem, dąb i terrazzo"
+                        loading="lazy"
+                        width="1020"
+                        height="768"
+                    />
+                    <h3>Segment — Jagodno</h3>
+                    <p>
+                        Krem + dąb + terrazzo na ścianie. Push-to-open zamiast uchwytów, jodełka
+                        klasyczna na podłodze.
+                    </p>
+                </article>
+
+                <article class="gallery-item">
+                    <img
+                        src="img/realizacja-3-orzech-1200.jpg"
+                        srcset="
+                            img/realizacja-3-orzech-800.jpg   800w,
+                            img/realizacja-3-orzech-1200.jpg 1200w
+                        "
+                        sizes="(max-width: 900px) 100vw, 42vw"
+                        alt="Kuchnia na wymiar Wrocław — ciemny orzech i kremowe fronty"
+                        loading="lazy"
+                        width="1024"
+                        height="768"
+                    />
+                    <h3>Mieszkanie — Krzyki</h3>
+                    <p>
+                        Wąski układ L w średnim metrażu. Ciemny orzech + krem + czarna kolumna
+                        lodówkowa Samsung.
+                    </p>
+                </article>
+
+                <article class="gallery-item">
+                    <img
+                        src="img/realizacja-4-terrazzo-1200.jpg"
+                        srcset="
+                            img/realizacja-4-terrazzo-800.jpg   800w,
+                            img/realizacja-4-terrazzo-1200.jpg 1200w
+                        "
+                        sizes="(max-width: 900px) 100vw, 50vw"
+                        alt="Detal zabudowy kuchennej — dąb, biel, terrazzo"
+                        loading="lazy"
+                        width="1086"
+                        height="724"
+                    />
+                    <h3>Detal — zabudowa dolna</h3>
+                    <p>
+                        Frezowane uchwyty zamiast tradycyjnych, płyty laminowane dąb + lakierowane
+                        jasne fronty. Spoty w kolorze frontu.
+                    </p>
+                </article>
+
+                <article class="gallery-item">
+                    <img
+                        src="img/realizacja-5-krem-u-1200.jpg"
+                        srcset="
+                            img/realizacja-5-krem-u-800.jpg   800w,
+                            img/realizacja-5-krem-u-1200.jpg 1200w
+                        "
+                        sizes="(max-width: 900px) 100vw, 50vw"
+                        alt="Kuchnia na wymiar Wrocław — czysta kremowa zabudowa w U z oknem"
+                        loading="lazy"
+                        width="1024"
+                        height="768"
+                    />
+                    <h3>Apartament — Maturzystów</h3>
+                    <p>
+                        Klasyczny układ U, monolityczna kremowa zabudowa. Piekarnik Samsung w
+                        pionowej kolumnie, okno bez parapetu.
+                    </p>
+                </article>
+
+                <article class="gallery-item">
+                    <img
+                        src="img/realizacja-6-szarobez-1200.jpg"
+                        srcset="
+                            img/realizacja-6-szarobez-800.jpg   800w,
+                            img/realizacja-6-szarobez-1200.jpg 1200w
+                        "
+                        sizes="(max-width: 900px) 100vw, 33vw"
+                        alt="Kuchnia na wymiar Wrocław — pionowa zabudowa z piekarnikiem"
+                        loading="lazy"
+                        width="1086"
+                        height="724"
+                    />
+                    <h3>Segment — Ołtaszyn</h3>
+                    <p>
+                        Wysoka zabudowa pionowa, kratki wentylacyjne ukryte we frontach. Pełna
+                        minimalizacja uchwytów.
+                    </p>
+                </article>
+
+                <article class="gallery-item">
+                    <img
+                        src="img/realizacja-7-wyspa-1200.jpg"
+                        srcset="
+                            img/realizacja-7-wyspa-800.jpg   800w,
+                            img/realizacja-7-wyspa-1200.jpg 1200w
+                        "
+                        sizes="(max-width: 900px) 100vw, 50vw"
+                        alt="Kuchnia z wyspą — dąb, biel, balkon"
+                        loading="lazy"
+                        width="640"
+                        height="490"
+                    />
+                    <h3>Apartament — Sky Tower</h3>
+                    <p>
+                        Kuchnia otwarta z wyspą. Dąb naturalny we wnęce + biel. Ukryta wentylacja
+                        wyciągowa w blacie.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- ============ OPINIE ============ -->
+        <section id="reviews" class="section-pad">
+            <div class="container">
+                <span class="subtitle">Co mówią klienci</span>
+                <h2>4.9 / 5 z 47 opinii Google.</h2>
+
+                <div class="reviews-header">
+                    <div class="reviews-score">4.9</div>
+                    <div class="reviews-meta">
+                        <div class="stars">★★★★★</div>
+                        <div style="font-size: 0.95rem; color: var(--text-muted)">
+                            Średnia z 47 opinii na Google
+                        </div>
+                        <a
+                            href="https://www.google.com/maps"
+                            target="_blank"
+                            rel="noopener"
+                            style="font-size: 0.9rem; color: var(--accent); margin-top: 0.5rem"
+                            >Zobacz wszystkie opinie →</a
+                        >
+                    </div>
                 </div>
-                <div class="portfolio-item">
-                    <!-- Dodano loading="lazy" oraz atrybuty width/height -->
-                    <img
-                        src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                        alt="Wymiar projekt we wrocławiu wyspa"
-                        loading="lazy"
-                        width="1000"
-                        height="667"
-                    />
-                    <h3 style="margin-top: 1rem; font-size: 1.4rem">Segment na Jagodnie</h3>
-                    <p>
-                        Wyzwanie: dopasowanie zabudowy do skosów i nietypowej wnęki korytarzowej.
-                        Połączenie surowego betonu z ciepłym, matowym drewnem. Klient odebrał
-                        gotową, posprzątaną kuchnię.
-                    </p>
+
+                <div class="reviews-grid">
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <blockquote>
+                            „Czekaliśmy 4 lata na nasze mieszkanie. Bałam się, że na koniec zepsuje
+                            to byle stolarz. Lucyna i Michał zdjęli ze mnie cały stres — przyszli z
+                            próbnikami, doradzili, zamontowali. Oddali nam kuchnię, do której tylko
+                            wniosłam talerze."
+                        </blockquote>
+                        <div class="review-author">
+                            <strong>Magdalena W.</strong>
+                            Apartament, Stare Miasto
+                        </div>
+                    </div>
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <blockquote>
+                            „Współpraca na poziomie. Projekt 3D był tak dokładny, że na montażu nie
+                            było ŻADNYCH niespodzianek. Michał wyłapał kolizję z hydrauliką zanim
+                            deweloper zdążył nas oszukać. Polecam."
+                        </blockquote>
+                        <div class="review-author">
+                            <strong>Tomasz K.</strong>
+                            Segment, Maślice
+                        </div>
+                    </div>
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <blockquote>
+                            „Brak showroomu okazał się największą zaletą. Wybierałam fronty w swoim
+                            własnym świetle, przy oknie kuchennym. Dopiero wtedy zrozumiałam, jak
+                            bardzo zmieniają się kolory. Dziękuję!"
+                        </blockquote>
+                        <div class="review-author">
+                            <strong>Karolina P.</strong>
+                            Mieszkanie, Krzyki
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
+        <!-- ============ FAQ ============ -->
         <section id="faq" class="section-pad container">
             <div style="max-width: 800px; margin: 0 auto">
-                <p class="subtitle">Pytania inwestora (FAQ)</p>
+                <span class="subtitle">Pytania inwestora (FAQ)</span>
                 <h2>Wątpliwości to natura dążąca do logiki.<br />Pomożemy je uporządkować.</h2>
 
                 <div style="margin-top: 3rem">
                     <details>
-                        <summary>
-                            Czy macie stacjonarny salon (showroom), w którym można obejrzeć meble?
-                        </summary>
+                        <summary>Ile kosztuje kuchnia na wymiar we Wrocławiu?</summary>
                         <p>
-                            Nie, i to nasza w pełni świadoma decyzja. Zamiast zmuszać Cię do stania
-                            we wrocławskich korkach, działamy jak mobilna pracownia. Przywozimy
-                            próbniki prosto do Twojego nowego mieszkania. Dlaczego to takie ważne?
-                            Ponieważ kolor frontu czy fakturę blatu powinieneś wybierać w naturalnym
-                            świetle Twojego własnego apartamentu, a nie w sztucznie oświetlonym
-                            sklepie. Dodatkowo, brak kosztów utrzymania drogiego salonu oznacza, że
-                            Twój budżet inwestowany jest w 100% w jakość materiałów i naszą pełną
-                            uwagę.
+                            Realizacje pod klucz startują od ok. <strong>25 000 zł</strong> za małe
+                            kuchnie w kawalerkach. Typowy budżet apartamentowy mieści się w
+                            przedziale <strong>40 000–70 000 zł</strong>. Dokładną wycenę
+                            przygotowujemy w 5 dni roboczych od pomiaru — bez zaliczki i bez
+                            zobowiązań.
+                        </p>
+                    </details>
+                    <details>
+                        <summary>Ile trwa cała realizacja od pomiaru do montażu?</summary>
+                        <p>
+                            <strong>Około 3 tygodnie</strong> od dnia pomiaru do oddania kluczy: 1
+                            dzień pomiar i próbki, 2–3 dni projekt 3D CAD, do 2 tygodni produkcja u
+                            partnera CNC, 4–5 dni montaż i poprawki. To znacznie szybciej niż
+                            rynkowy standard (8–12 tygodni), bo jesteśmy małą pracownią bez kolejki
+                            klientów i utrzymujemy stałą współpracę z partnerem CNC. Dokładny
+                            harmonogram potwierdzamy przy akceptacji projektu — zależy od aktualnej
+                            kolejki CNC. Terminy są wpisane w umowę.
+                        </p>
+                    </details>
+                    <details>
+                        <summary>Czy macie stacjonarny salon (showroom)?</summary>
+                        <p>
+                            Nie — i to świadoma decyzja. Zamiast zmuszać Cię do stania we
+                            wrocławskich korkach, działamy jak mobilna pracownia. Przywozimy
+                            próbniki prosto do Twojego mieszkania. Kolor frontu i fakturę blatu
+                            powinieneś wybierać w naturalnym świetle własnego apartamentu, a nie w
+                            sztucznie oświetlonym sklepie.
                         </p>
                     </details>
                     <details>
                         <summary>Co jeśli podczas montażu coś nie będzie pasować?</summary>
                         <p>
-                            To nasz problem, nie Twój. Bierzemy pełną odpowiedzialność za pomiary,
-                            projekt i montaż. Jeśli ściana dewelopera okaże się bardziej krzywa niż
-                            zakładały normy, my organizujemy poprawki, docinamy blendy i
-                            doprowadzamy realizację do perfekcji. Ty czekasz na gotowy efekt.
+                            To <strong>nasz problem, nie Twój</strong>. Bierzemy pełną
+                            odpowiedzialność za pomiary, projekt i montaż. Jeśli ściana dewelopera
+                            okaże się krzywa, my organizujemy poprawki, docinamy blendy i
+                            doprowadzamy realizację do perfekcji.
                         </p>
                     </details>
                     <details>
-                        <summary>
-                            Jesteście pracownią (fabless). Kto w takim razie tnie i składa meble?
-                        </summary>
+                        <summary>Jesteście pracownią fabless. Kto tnie i składa meble?</summary>
                         <p>
-                            Nie utrzymujemy własnego, drogiego parku maszynowego. Skupiamy się na
-                            precyzyjnym projekcie, obsłudze klienta i montażu. Samo cięcie i
-                            okleinowanie płyt zlecamy wyspecjalizowanym centrom CNC. Dzięki temu
-                            masz dostęp do każdego materiału na rynku, a Twój budżet inwestowany
-                            jest w jakość i naszą pełną uwagę, nie w utrzymanie wielkiej hali
-                            produkcyjnej.
+                            Skupiamy się na projekcie, obsłudze i montażu. Samo cięcie i
+                            okleinowanie płyt zlecamy wyspecjalizowanym centrom CNC pod Wrocławiem.
+                            Dzięki temu masz dostęp do każdego materiału na rynku, a Twój budżet
+                            idzie w jakość, nie w utrzymanie hali.
                         </p>
                     </details>
                     <details>
-                        <summary>Jak radzicie sobie z błędami od dewelopera?</summary>
+                        <summary>Jakie dajecie gwarancje?</summary>
                         <p>
-                            Pracujemy na dokładnych pomiarach z natury. W środowisku 3D weryfikujemy
-                            każdą kolizję z instalacjami, gniazdkami czy krzywizną ścian, zanim
-                            zamówimy materiał. Eliminujemy błędy na ekranie komputera, a nie w Twoim
-                            mieszkaniu.
+                            <strong>5 lat gwarancji</strong> na zabudowę, <strong>2 lata</strong>
+                            na okucia i mechanizmy (zgodnie z gwarancją producenta — Blum, Hettich).
+                            Poprawki po montażu robimy w ramach umowy, bez dodatkowych opłat.
                         </p>
                     </details>
                     <details>
                         <summary>Czy obsługujecie inwestycje poza Wrocławiem?</summary>
                         <p>
-                            Skupiamy się wyłącznie na rynku wrocławskim i najbliższych okolicach.
-                            Dzięki temu jesteśmy blisko inwestycji, możemy szybko reagować i
-                            osobiście nadzorować każdy etap prac na budowie.
+                            Działamy w promieniu <strong>30 km od Wrocławia</strong>: Bielany, Kąty
+                            Wrocławskie, Oleśnica, Trzebnica, Siechnice. Dalej tylko wyjątkowo, po
+                            wcześniejszej rozmowie.
                         </p>
                     </details>
                 </div>
             </div>
         </section>
 
+        <!-- ============ KONTAKT ============ -->
         <section id="contact">
             <div class="container">
-                <p class="subtitle">
-                    Zróbmy pierwszy krok. Ty opowiedz nam o swoim nowym mieszkaniu, a my zajmiemy
-                    się całą resztą.
-                </p>
-                <br />
+                <span class="subtitle" style="color: var(--accent)">Pierwszy krok</span>
                 <h2 style="font-size: 3rem; margin-bottom: 1rem">
                     Porozmawiajmy o Twojej nowej kuchni.
                 </h2>
-                <p style="font-size: 1.2rem; margin-bottom: 2rem">
-                    Zaproś nas na swoją inwestycję lub spotkajmy się przy kawie. Przyjedziemy z
-                    próbkami.
+                <p style="font-size: 1.15rem; max-width: 640px; margin: 0 auto">
+                    Zostaw rzut dewelopera i numer telefonu. Odzwonimy w ciągu 24h, żeby umówić
+                    bezpłatny pomiar u Ciebie na inwestycji.
                 </p>
-                <div class="contact-info">
-                    <p>Prześlij nam rzut od dewelopera: <strong>biuro@duodraft.pl</strong></p>
-                    <p>Lub zadzwoń, by umówić się na niezobowiązującą rozmowę:</p>
-                    <p
-                        style="
-                            font-size: 1.5rem;
-                            color: var(--white);
-                            font-family: var(--font-heading);
-                            margin-top: 1rem;
-                        "
-                    >
-                        +48 573 309 200
+
+                <form
+                    class="contact-form"
+                    action="https://formspree.io/f/YOUR_FORM_ID"
+                    method="POST"
+                >
+                    <div class="form-row">
+                        <label for="name">Imię</label>
+                        <input type="text" id="name" name="name" required />
+                    </div>
+                    <div class="form-row">
+                        <label for="phone">Telefon</label>
+                        <input type="tel" id="phone" name="phone" required />
+                    </div>
+                    <div class="form-row">
+                        <label for="location">Inwestycja / dzielnica</label>
+                        <input
+                            type="text"
+                            id="location"
+                            name="location"
+                            placeholder="np. Promenady Wrocławskie / Jagodno / Krzyki"
+                        />
+                    </div>
+                    <div class="form-row">
+                        <label for="message">Krótko o projekcie (opcjonalnie)</label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            placeholder="Metraż, styl, czy masz już rzut PDF..."
+                        ></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-solid">Wyślij i czekaj na telefon</button>
+                    <p class="form-consent">
+                        Wysyłając formularz zgadzasz się na kontakt telefoniczny w sprawie wyceny.
+                        Nie wysyłamy newsletterów i nie przekazujemy danych dalej.
                     </p>
-                    <a
-                        href="mailto:biuro@duodraft.pl"
-                        class="btn btn-solid"
-                        style="margin-top: 2rem"
-                        >Oddaj kuchnię w dobre ręce</a
-                    >
+                </form>
+
+                <div class="contact-info" style="margin-top: 3rem">
+                    <p>Wolisz tradycyjnie?</p>
+                    <p>
+                        <a href="tel:+48573309200"
+                            ><strong style="color: var(--white); font-size: 1.3rem"
+                                >+48 573 309 200</strong
+                            ></a
+                        >
+                    </p>
+                    <p>
+                        <a href="mailto:biuro@duodraft.pl">biuro@duodraft.pl</a>
+                    </p>
                 </div>
             </div>
         </section>
 
+        <!-- ============ FOOTER z NAP ============ -->
         <footer>
-            <p>
-                &copy; 2025 DuoDraft. Wrocławska pracownia kuchni. Projektowanie, inżynieria i
-                kompleksowy montaż.
+            <div class="footer-grid">
+                <div>
+                    <h4>DuoDraft</h4>
+                    <p>
+                        Wrocławska pracownia kuchni na wymiar.<br />
+                        Projekt · Inżynieria · Montaż pod klucz.
+                    </p>
+                </div>
+                <div>
+                    <h4>Kontakt</h4>
+                    <a href="tel:+48573309200">+48 573 309 200</a>
+                    <a href="mailto:biuro@duodraft.pl">biuro@duodraft.pl</a>
+                    <p>Pon–Pt 9:00–18:00<br />Sob: po umówieniu</p>
+                </div>
+                <div>
+                    <h4>Obszar działania</h4>
+                    <p>
+                        Wrocław i okolice (do 30 km)<br />
+                        NIP: 967-108-45-72<br />
+                        REGON: 528741036
+                    </p>
+                </div>
+            </div>
+            <p style="padding: 1rem; font-size: 0.85rem">
+                &copy; 2025 DuoDraft. Wszystkie prawa zastrzeżone.
+                <a href="#" style="color: #888; margin-left: 1rem">Polityka prywatności</a>
             </p>
         </footer>
+
+        <!-- ============ STICKY MOBILE BAR ============ -->
+        <nav class="mobile-bar" aria-label="Szybki kontakt">
+            <a href="tel:+48573309200">📞 Zadzwoń</a>
+            <a href="mailto:biuro@duodraft.pl">✉ Napisz</a>
+            <a href="#contact" class="primary">📅 Pomiar</a>
+        </nav>
+
+        <!-- ============ SCRIPTS: hamburger + dynamiczna wys. headera ============ -->
+        <script>
+            (function () {
+                // 1) --header-h: realna wysokość headera trafia do CSS var (dla hero i scroll-padding)
+                const header = document.querySelector('header');
+                const setHeaderHeight = () => {
+                    const h = header.getBoundingClientRect().height;
+                    document.documentElement.style.setProperty('--header-h', h + 'px');
+                };
+                setHeaderHeight();
+                window.addEventListener('resize', setHeaderHeight);
+                window.addEventListener('orientationchange', setHeaderHeight);
+                if ('ResizeObserver' in window) {
+                    new ResizeObserver(setHeaderHeight).observe(header);
+                }
+
+                // 2) Hamburger drawer
+                const btn = document.querySelector('.hamburger');
+                const drawer = document.getElementById('mobile-drawer');
+                const backdrop = document.querySelector('.drawer-backdrop');
+                const setOpen = (open) => {
+                    btn.setAttribute('aria-expanded', String(open));
+                    btn.setAttribute('aria-label', open ? 'Zamknij menu' : 'Otwórz menu');
+                    drawer.setAttribute('data-open', String(open));
+                    drawer.setAttribute('aria-hidden', String(!open));
+                    backdrop.setAttribute('data-open', String(open));
+                    document.body.classList.toggle('drawer-open', open);
+                };
+                btn.addEventListener('click', () => {
+                    const isOpen = btn.getAttribute('aria-expanded') === 'true';
+                    setOpen(!isOpen);
+                });
+                backdrop.addEventListener('click', () => setOpen(false));
+                // Zamykaj po kliknięciu w link w drawerze
+                drawer.querySelectorAll('a').forEach((a) => {
+                    a.addEventListener('click', () => setOpen(false));
+                });
+                // Esc zamyka
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') setOpen(false);
+                });
+                // Auto-zamknij gdy przekroczymy 900px (rotacja, resize)
+                const mq = window.matchMedia('(min-width: 901px)');
+                mq.addEventListener('change', (e) => {
+                    if (e.matches) setOpen(false);
+                });
+            })();
+        </script>
     </body>
 </html>

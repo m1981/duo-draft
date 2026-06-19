@@ -35,3 +35,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .idea
+# Oryginały zdjęć z aparatu (UUID-nazwy) — w repo trzymamy tylko zoptymalizowane warianty
+img/*_1_10*.jpeg
+img/*_1_10*.jpg
