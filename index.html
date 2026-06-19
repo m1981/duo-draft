@@ -408,12 +408,17 @@
                 line-height: 1.5;
             }
 
-            /* GALLERY — rozstrzelona siatka realizacji (CSS Grid, bez JS) */
+            /* GALLERY — generyczna siatka realizacji */
             .gallery-grid {
                 display: grid;
-                grid-template-columns: 1fr;
-                gap: 2rem;
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                gap: 1.5rem 2rem;
                 margin-top: 3rem;
+                align-items: start;
+            }
+            .gallery-item {
+                display: flex;
+                flex-direction: column;
             }
             .gallery-item img {
                 width: 100%;
@@ -427,37 +432,6 @@
             }
             .gallery-item p {
                 font-size: 0.95rem;
-            }
-            @media (min-width: 901px) {
-                .gallery-grid {
-                    grid-template-columns: repeat(12, 1fr);
-                    gap: 2rem 2rem;
-                }
-                /* Rozstrzelony układ: różne szerokości i offsety na 12-kolumnowej siatce */
-                .gallery-item:nth-child(1) {
-                    grid-column: 1 / span 7;
-                }
-                .gallery-item:nth-child(2) {
-                    grid-column: 9 / span 4;
-                    margin-top: 4rem;
-                }
-                .gallery-item:nth-child(3) {
-                    grid-column: 1 / span 5;
-                }
-                .gallery-item:nth-child(4) {
-                    grid-column: 7 / span 6;
-                    margin-top: -3rem;
-                }
-                .gallery-item:nth-child(5) {
-                    grid-column: 2 / span 6;
-                }
-                .gallery-item:nth-child(6) {
-                    grid-column: 9 / span 4;
-                    margin-top: 5rem;
-                }
-                .gallery-item:nth-child(7) {
-                    grid-column: 4 / span 6;
-                }
             }
 
             /* STICKY MOBILE BAR */
@@ -925,10 +899,10 @@
                         width="1024"
                         height="768"
                     />
-                    <h3>Apartament — Promenady Wrocławskie</h3>
+                    <h3>Kuchnia U z małym oknem pasowym na Sępolnie</h3>
                     <p>
-                        Układ U z panoramicznym oknem pasowym. Matowy dąb naturalny, biel i czarne
-                        blaty kompozytowe.
+                        Układ U z małym oknem pasowym. Matowy dąb naturalny, biel i czarne blaty
+                        kompozytowe.
                     </p>
                 </article>
 
@@ -945,11 +919,9 @@
                         width="1020"
                         height="768"
                     />
+
                     <h3>Segment — Jagodno</h3>
-                    <p>
-                        Krem + dąb + terrazzo na ścianie. Push-to-open zamiast uchwytów, jodełka
-                        klasyczna na podłodze.
-                    </p>
+                    <p>Krem + dąb + terrazzo na ścianie. Uchwytu nakładane.</p>
                 </article>
 
                 <article class="gallery-item">
@@ -967,28 +939,8 @@
                     />
                     <h3>Mieszkanie — Krzyki</h3>
                     <p>
-                        Wąski układ L w średnim metrażu. Ciemny orzech + krem + czarna kolumna
-                        lodówkowa Samsung.
-                    </p>
-                </article>
-
-                <article class="gallery-item">
-                    <img
-                        src="img/realizacja-4-terrazzo-1200.jpg"
-                        srcset="
-                            img/realizacja-4-terrazzo-800.jpg   800w,
-                            img/realizacja-4-terrazzo-1200.jpg 1200w
-                        "
-                        sizes="(max-width: 900px) 100vw, 50vw"
-                        alt="Detal zabudowy kuchennej — dąb, biel, terrazzo"
-                        loading="lazy"
-                        width="1086"
-                        height="724"
-                    />
-                    <h3>Detal — zabudowa dolna</h3>
-                    <p>
-                        Frezowane uchwyty zamiast tradycyjnych, płyty laminowane dąb + lakierowane
-                        jasne fronty. Spoty w kolorze frontu.
+                        Wąski układ L w średnim metrażu. Ciemny orzech + krem + słupek z
+                        piekarnikiem.
                     </p>
                 </article>
 
@@ -1027,8 +979,8 @@
                     />
                     <h3>Segment — Ołtaszyn</h3>
                     <p>
-                        Wysoka zabudowa pionowa, kratki wentylacyjne ukryte we frontach. Pełna
-                        minimalizacja uchwytów.
+                        Wysoka zabudowa pionowa, kratki wentylacyjne ukryte we frontach.
+                        Minimalistyczne uchwyty.
                     </p>
                 </article>
 
@@ -1048,7 +1000,7 @@
                     <h3>Apartament — Sky Tower</h3>
                     <p>
                         Kuchnia otwarta z wyspą. Dąb naturalny we wnęce + biel. Ukryta wentylacja
-                        wyciągowa w blacie.
+                        wyciągowa.
                     </p>
                 </article>
             </div>
